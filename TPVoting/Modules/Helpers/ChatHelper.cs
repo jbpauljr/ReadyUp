@@ -1,4 +1,4 @@
-﻿namespace Mordrog
+namespace Mordrog
 {
     public static class ChatHelper
     {
@@ -23,13 +23,13 @@
 
         public static void PlayersNotReady()
         {
-            var message = $"<color=#{RedColor}>Players are not ready.</color> Vote by writting <color=#{SilverColor}>\"r\"</color> in chat.";
+            var message = $"<color=#{RedColor}>Players are not ready.</color> Ready up by writing <color=#{SilverColor}>\"r\"</color> in chat or activating the Teleporter.";
             RoR2.Chat.SendBroadcastChat(new RoR2.Chat.SimpleChatMessage { baseToken = message });
         }
 
         public static void VotingInstruction()
         {
-            var message = $"Vote <color=#{RedColor}>Teleporter</color> by writting <color=#{SilverColor}>\"r\"</color> in chat.";
+            var message = $"Ready up for the <color=#{RedColor}>Teleporter</color> by writing <color=#{SilverColor}>\"r\"</color> in chat.";
             RoR2.Chat.SendBroadcastChat(new RoR2.Chat.SimpleChatMessage { baseToken = message });
         }
 
