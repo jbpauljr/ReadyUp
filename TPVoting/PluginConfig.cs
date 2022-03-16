@@ -9,9 +9,9 @@ namespace Mordrog
             PlayerIsReadyMessages;
 
         public static ConfigEntry<uint>
-            MajorityVotesCountdownTime;
+            MajorityVotesCountdownTimeBoss;
 
-        public static ConfigEntry<bool>
-            UserAutoVoteOnDeath;
+        public static ConfigEntry<uint>
+            MajorityVotesCountdownTime;
     }
 }

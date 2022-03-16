@@ -57,6 +57,27 @@ namespace Mordrog
             return user && usersTPVoting.Vote(user);
         }
 
+        public void RestartVoting(bool countDead)
+        {
+            if (majorityTPVotingRunning)
+                StopCoroutine(majorityTPVotingTimer);
+            majorityTPVotingRunning = false;
+            usersTPVoting.AbandonVoting();
+
+            if (UsersHelper.IsOneUserOnly() || !CheckIfCurrentStageQualifyForTPVoting())
+                return;
+
+            if (countDead)
+            {
+                usersTPVoting.StartVoting(NetworkUser.readOnlyInstancesList);
+            }
+            else
+            {
+                usersTPVoting.StartVoting(NetworkUser.readOnlyInstancesList.Where(user =>
+                    !user.master.IsDeadAndOutOfLivesServer()).ToList());
+            }
+        }
+
         private void UsersTPVoting_OnVotingStarted()
         {
             OnTPVotingStarted?.Invoke();
@@ -91,7 +112,7 @@ namespace Mordrog
             {
                 if (!majorityTPVotingRunning)
                 {
-                    var unlockTime = PluginConfig.MajorityVotesCountdownTime.Value;
+                    var unlockTime = PluginGlobals.CurrentCountdownTime;
 
                     ChatHelper.TPCountdown(unlockTime);
                     StartCoroutine(majorityTPVotingTimer = WaitAndEndVoting());
@@ -111,15 +132,8 @@ namespace Mordrog
         {
             orig(self, sceneName);
 
-            if (majorityTPVotingRunning)
-                StopCoroutine(majorityTPVotingTimer);
-            majorityTPVotingRunning = false;
-            usersTPVoting.AbandonVoting();
-
-            if (UsersHelper.IsOneUserOnly() || !CheckIfCurrentStageQualifyForTPVoting())
-                return;
-
-            usersTPVoting.StartVoting(NetworkUser.readOnlyInstancesList);
+            PluginGlobals.CurrentCountdownTime = PluginConfig.MajorityVotesCountdownTimeBoss.Value;
+            RestartVoting(true);
         }
 
         private void CharacterMaster_OnBodyDeath(On.RoR2.CharacterMaster.orig_OnBodyDeath orig, CharacterMaster self, CharacterBody body)
@@ -131,13 +145,13 @@ namespace Mordrog
                 return;
             }
 
-            if (PluginConfig.UserAutoVoteOnDeath.Value && self.IsDeadAndOutOfLivesServer())
+            if (self.IsDeadAndOutOfLivesServer())
             {
                 var user = UsersHelper.GetUser(self);
 
                 if (user)
                 {
-                    usersTPVoting.Vote(user);
+                    usersTPVoting.RemoveVoter(user);
                 }
             }
         }

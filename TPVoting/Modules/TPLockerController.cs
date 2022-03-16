@@ -30,6 +30,7 @@ namespace Mordrog
 
             On.RoR2.TeleporterInteraction.GetInteractability += TeleporterInteraction_GetInteractability;
             On.RoR2.TeleporterInteraction.OnInteractionBegin += TeleporterInteraction_OnInteractionBegin;
+            On.RoR2.BossGroup.OnDefeatedServer += BossGroup_OnDefeatedServer;
 
             hook_GetInteractability = new Hook(typeof(GenericInteraction).GetMethod("RoR2.IInteractable.GetInteractability", BindingFlags.NonPublic | BindingFlags.Instance), typeof(TPLockerController).GetMethod("GenericInteraction_GetInteractability"), this, new HookConfig());
             hook_OnInteractionBegin = new Hook(typeof(GenericInteraction).GetMethod("RoR2.IInteractable.OnInteractionBegin", BindingFlags.NonPublic | BindingFlags.Instance), typeof(TPLockerController).GetMethod("GenericInteraction_OnInteractionBegin"), this, new HookConfig());
@@ -96,6 +97,14 @@ namespace Mordrog
 
                 ChatHelper.PlayersNotReady();
             }
+        }
+
+        public void BossGroup_OnDefeatedServer(On.RoR2.BossGroup.orig_OnDefeatedServer orig, global::RoR2.BossGroup self)
+        {
+            PluginGlobals.CurrentCountdownTime = PluginConfig.MajorityVotesCountdownTime.Value;
+            usersTPVotingController.RestartVoting(false);
+            ChatHelper.BossDefeated();
+            orig(self);
         }
 
         public Interactability GenericInteraction_GetInteractability(orig_GetInteractability orig, GenericInteraction self, Interactor activator)

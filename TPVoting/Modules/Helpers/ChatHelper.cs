@@ -1,4 +1,4 @@
-namespace Mordrog
+﻿namespace Mordrog
 {
     public static class ChatHelper
     {
@@ -36,6 +36,12 @@ namespace Mordrog
         public static void TPCountdown(uint unlockTime)
         {
             var message = $"Starting <color=#{RedColor}>Teleporter</color> unlock <color=#{YellowColor}>countdown!</color> <color=#{GrayColor}>({unlockTime} seconds left)</color>";
+            RoR2.Chat.SendBroadcastChat(new RoR2.Chat.SimpleChatMessage { baseToken = message });
+        }
+
+        public static void BossDefeated()
+        {
+            var message = $"Boss was defeated. Starting new vote!</color>";
             RoR2.Chat.SendBroadcastChat(new RoR2.Chat.SimpleChatMessage { baseToken = message });
         }
     }

@@ -22,5 +22,7 @@ namespace Mordrog
             "artifactworld",
             "mysteryspace",
         };
+
+        public static uint CurrentCountdownTime;
     }
 }

@@ -49,18 +49,18 @@ namespace Mordrog
                 "The message the player has to write in the chat to confirm they are ready. Values must be separated by comma."
             );
 
+            PluginConfig.MajorityVotesCountdownTimeBoss = Config.Bind<uint>(
+                "Settings",
+                "MajorityVotesCountdownTimeBoss",
+                10,
+                "Countdown in seconds to unlock the teleporter boss fight when half or most of the players are ready."
+            );
+
             PluginConfig.MajorityVotesCountdownTime = Config.Bind<uint>(
                 "Settings",
                 "MajorityVotesCountdownTime",
-                30,
+                60,
                 "Countdown in seconds to unlock the teleporter when half or most of the players are ready."
-            );
-
-            PluginConfig.UserAutoVoteOnDeath = Config.Bind<bool>(
-                "Settings",
-                "UserAutoVoteOnDeath",
-                true,
-                "Should players auto vote tp start when they die."
             );
         }
     }
