@@ -62,10 +62,6 @@
       <HintPath>F:\SteamLibrary\steamapps\common\Risk of Rain 2\Risk of Rain 2_Data\Managed\RoR2.dll</HintPath>
       <Private>false</Private>
     </Reference>
-    <Reference Include="R2API">
-      <HintPath>C:\Users\Valter\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\Valter\BepInEx\plugins\tristanmcpherson-R2API\R2API\R2API.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
     <Reference Include="UnityEngine">
       <HintPath>F:\SteamLibrary\steamapps\common\Risk of Rain 2\Risk of Rain 2_Data\Managed\UnityEngine.dll</HintPath>
       <Private>false</Private>

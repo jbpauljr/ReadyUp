@@ -1,11 +1,8 @@
 ﻿using BepInEx;
-using R2API.Utils;
 using RoR2;
 
 namespace Valter
 {
-    [BepInDependency("com.bepis.r2api")]
-    [NetworkCompatibility(CompatibilityLevel.NoNeedForSync)]
     [BepInPlugin(ModGuid, ModName, ModVer)]
     public class ReadyUpPlugin : BaseUnityPlugin
     {
