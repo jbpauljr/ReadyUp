@@ -1,4 +1,4 @@
-﻿namespace Mordrog
+﻿namespace Valter
 {
     public static class ChatHelper
     {
@@ -41,7 +41,13 @@
 
         public static void BossDefeated()
         {
-            var message = $"Boss was defeated. Starting new vote!</color>";
+            var message = $"Boss was defeated. Starting new vote!";
+            RoR2.Chat.SendBroadcastChat(new RoR2.Chat.SimpleChatMessage { baseToken = message });
+        }
+
+        public static void TimeWarning(uint minutes)
+        {
+            var message = $"<color=#{RedColor}>{minutes} minute warning!</color> You should be going for the <color=#{RedColor}>Teleporter</color> now!";
             RoR2.Chat.SendBroadcastChat(new RoR2.Chat.SimpleChatMessage { baseToken = message });
         }
     }

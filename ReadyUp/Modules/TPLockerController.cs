@@ -7,7 +7,7 @@ using MonoMod.RuntimeDetour;
 using RoR2;
 using UnityEngine.Networking;
 
-namespace Mordrog
+namespace Valter
 {
     public class TPLockerController : NetworkBehaviour
     {

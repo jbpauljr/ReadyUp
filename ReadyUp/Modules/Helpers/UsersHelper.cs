@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace Mordrog
+namespace Valter
 {
     public static class UsersHelper
     {

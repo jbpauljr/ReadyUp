@@ -2,13 +2,15 @@
 using RoR2;
 using System.Linq;
 using System.Collections;
+using UnityEngine;
 
-namespace Mordrog
+namespace Valter
 {
     public class UsersTPVotingController : NetworkBehaviour
     {
         private UsersVoting usersTPVoting = new UsersVoting();
         private IEnumerator majorityTPVotingTimer;
+        private Coroutine levelTimer = null;
         private bool majorityTPVotingRunning;
 
         public delegate void TPVotingRestart();
@@ -134,6 +136,18 @@ namespace Mordrog
 
             PluginGlobals.CurrentCountdownTime = PluginConfig.MajorityVotesCountdownTimeBoss.Value;
             RestartVoting(true);
+
+            if (levelTimer != null)
+            {
+                StopCoroutine(levelTimer);
+            }
+            levelTimer = StartCoroutine(WaitAndEndVoting());
+
+            IEnumerator WaitAndEndVoting()
+            {
+                yield return new UnityEngine.WaitForSeconds(PluginConfig.LevelTimeWarningMinutes.Value * 60);
+                ChatHelper.TimeWarning(PluginConfig.LevelTimeWarningMinutes.Value);
+            }
         }
 
         private void CharacterMaster_OnBodyDeath(On.RoR2.CharacterMaster.orig_OnBodyDeath orig, CharacterMaster self, CharacterBody body)

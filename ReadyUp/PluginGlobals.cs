@@ -1,7 +1,7 @@
 ﻿using RoR2;
 using System.Collections.Generic;
 
-namespace Mordrog
+namespace Valter
 {
     public static class PluginGlobals
     {

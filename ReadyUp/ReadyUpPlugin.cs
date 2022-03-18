@@ -2,20 +2,20 @@
 using R2API.Utils;
 using RoR2;
 
-namespace Mordrog
+namespace Valter
 {
     [BepInDependency("com.bepis.r2api")]
     [NetworkCompatibility(CompatibilityLevel.NoNeedForSync)]
     [BepInPlugin(ModGuid, ModName, ModVer)]
-    public class TPVotingPlugin : BaseUnityPlugin
+    public class ReadyUpPlugin : BaseUnityPlugin
     {
-        public const string ModVer = "1.2.0";
-        public const string ModName = "TPVoting";
-        public const string ModGuid = "com.Mordrog.TPVoting";
+        public const string ModVer = "1.0.0";
+        public const string ModName = "ReadyUp";
+        public const string ModGuid = "com.Valter.ReadyUp";
 
         public TPLockerController TPLockerController { get; private set; }
 
-        public TPVotingPlugin()
+        public ReadyUpPlugin()
         {
             InitConfig();
         }
@@ -61,6 +61,13 @@ namespace Mordrog
                 "MajorityVotesCountdownTime",
                 60,
                 "Countdown in seconds to unlock the teleporter when half or most of the players are ready."
+            );
+
+            PluginConfig.LevelTimeWarningMinutes = Config.Bind<uint>(
+                "Settings",
+                "LevelTimeWarningMinutes",
+                4,
+                "Number of minutes from the beginning of the level to warn the player about."
             );
         }
     }

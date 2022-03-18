@@ -1,7 +1,7 @@
 ﻿using BepInEx.Configuration;
 using System.Collections.Generic;
 
-namespace Mordrog
+namespace Valter
 {
     class PluginConfig
     {
@@ -13,5 +13,8 @@ namespace Mordrog
 
         public static ConfigEntry<uint>
             MajorityVotesCountdownTime;
+
+        public static ConfigEntry<uint>
+        LevelTimeWarningMinutes;
     }
 }

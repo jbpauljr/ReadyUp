@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace Mordrog
+namespace Valter
 {
     public class UsersVoting
     {
         private Dictionary<NetworkUserId, bool> usersVotes = new Dictionary<NetworkUserId, bool>();
         public IReadOnlyDictionary<NetworkUserId, bool> UsersVotes => new ReadOnlyDictionary<NetworkUserId, bool>(usersVotes);
 
-        public bool IsVotingStarted {get; private set;}
+        public bool IsVotingStarted { get; private set; }
 
         public delegate void VotingUpdate();
         public event VotingUpdate OnVotingUpdate;
