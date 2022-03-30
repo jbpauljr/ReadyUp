@@ -182,7 +182,7 @@ namespace Valter
             usersTPVoting.RemoveVoter(user);
         }
 
-        private void private void CharacterBody_Update(On.RoR2.CharacterBody.orig_Update orig, CharacterBody self)
+        private void CharacterBody_Update(On.RoR2.CharacterBody.orig_Update orig, CharacterBody self)
         {
             orig(self);
             if (self.hasAuthority && self.isPlayerControlled && self.master
