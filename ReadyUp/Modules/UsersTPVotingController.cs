@@ -182,31 +182,23 @@ namespace Valter
             usersTPVoting.RemoveVoter(user);
         }
 
-        private void Chat_SendBroadcastChat_ChatMessageBase(On.RoR2.Chat.orig_SendBroadcastChat_ChatMessageBase orig, ChatMessageBase message)
+        private void private void CharacterBody_Update(On.RoR2.CharacterBody.orig_Update orig, CharacterBody self)
         {
+            orig(self);
+            if (self.hasAuthority && self.isPlayerControlled && self.master
+                && !LocalUserManager.readOnlyLocalUsersList[0].isUIFocused
+                && Input.GetKeyDown(KeyCode.Y))
+        
             if (!usersTPVoting.IsVotingStarted)
             {
-                orig(message);
                 return;
             }
-
-            if (message is Chat.UserChatMessage userChatMessage)
-            {
-                var user = userChatMessage.sender.GetComponent<NetworkUser>();
-
-                if (user)
-                {
-                    var preparedMessage = userChatMessage.text.ToLower().Trim();
-
-                    if (CheckIfReadyMessage(preparedMessage))
-                    {
+                    
                         if (usersTPVoting.Vote(user))
                             return;
-                    }
-                }
-            }
+                    
+                
 
-            orig(message);
         }
 
         private bool CheckIfReadyMessage(string message)
