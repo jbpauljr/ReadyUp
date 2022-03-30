@@ -23,7 +23,7 @@
 
         public static void PlayersNotReady()
         {
-            var message = $"<color=#{RedColor}>Players are not ready.</color> Ready up by writing <color=#{SilverColor}>\"r\"</color> in chat or activating the Teleporter.";
+            var message = $"<color=#{RedColor}>Players are not ready.</color> Ready up by pressing <color=#{SilverColor}>\"Y\"</color> in chat or activating the Teleporter.";
             RoR2.Chat.SendBroadcastChat(new RoR2.Chat.SimpleChatMessage { baseToken = message });
         }
 
