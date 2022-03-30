@@ -1,5 +1,5 @@
 {
-    "name": "ReadyUp",
+    "name": "TeleporterReadyButton",
     "version_number": "1.0.0",
     "website_url": "https://github.com/anpage/ReadyUp",
     "description": "Provides a system to \"ready up\" for the boss fight and teleporting to the next level.",

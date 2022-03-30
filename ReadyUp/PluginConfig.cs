@@ -1,7 +1,7 @@
 ﻿using BepInEx.Configuration;
 using System.Collections.Generic;
 
-namespace Valter
+namespace jbpaul
 {
     class PluginConfig
     {

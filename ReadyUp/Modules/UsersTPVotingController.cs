@@ -6,7 +6,7 @@ using UnityEngine;
 using BepInEx;
 
 
-namespace Valter
+namespace jbpaul
 {
     public class UsersTPVotingController : NetworkBehaviour
     {

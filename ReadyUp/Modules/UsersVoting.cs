@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace Valter
+namespace jbpaul
 {
     public class UsersVoting
     {

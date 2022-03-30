@@ -1,4 +1,4 @@
-﻿namespace Valter
+﻿namespace jbpaul
 {
     public static class ChatHelper
     {

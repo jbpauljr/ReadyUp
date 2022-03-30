@@ -1,14 +1,14 @@
 ﻿using BepInEx;
 using RoR2;
 
-namespace Valter
+namespace jbpaul
 {
     [BepInPlugin(ModGuid, ModName, ModVer)]
     public class ReadyUpPlugin : BaseUnityPlugin
     {
         public const string ModVer = "1.0.0";
         public const string ModName = "ReadyUp";
-        public const string ModGuid = "com.Valter.ReadyUp";
+        public const string ModGuid = "com.jbpaul.ReadyUp";
 
         public TPLockerController TPLockerController { get; private set; }
 
